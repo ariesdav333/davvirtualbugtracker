@@ -25,7 +25,7 @@ SECRET_KEY = '-udg$)e-x7)&pg@3ws6nsgr@c&l-5lkc_*_x-i))1!9iwv3tu5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['davsoftware-airesdav333.c9users.io']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
 ]
 
 MIDDLEWARE = [
