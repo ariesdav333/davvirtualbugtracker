@@ -30,8 +30,9 @@
         {% endif %}
         
         <form method="POST">
+            {% csrf_token %}
             {{ login_form }}
-            <button type="submit"> Login </button>
+            <button type="submit"> Login davidwilliams_canada@yahoo.com</button>
         </form>
         
     
