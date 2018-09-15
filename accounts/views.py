@@ -14,4 +14,7 @@ def logout(request):
     auth.logout(request)
     messages.success(request, "YOu have now logged out. See you soon") # a mesage to the user to say they have logged out
     return redirect(reverse('index'))  # once logged out will return to the index page
-    
+
+def login(request):
+    """ Log user in to a page """
+    return render(request, 'login.html')
