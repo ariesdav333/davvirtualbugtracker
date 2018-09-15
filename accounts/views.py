@@ -18,5 +18,24 @@ def logout(request):
 
 def login(request):
     """ Log user in to a page """
-    login_form = UserLoginForm() # create an instance of UserLogin form which will be used by login_form
+    if request.method == "POST":
+        login_form = UserLoginForm(request.POST)
+        
+        """ Will test the users credentials to see if the login is correect with a message to the user """
+        if login_form.is_valid():
+            user = auth.authenticate(username=request.POST['username'],
+                                    password=request.POST['password'])
+            
+            
+            
+            if user:
+                auth.login(user=user, request=request)
+                messages.success(request, "You have now logged in")
+            else:
+                login_form.add_error(None, "You username or password is incorrect")
+                
+                
+            
+    else:
+        login_form = UserLoginForm()    # just defaults to the normal User Login screen waiting for input
     return render(request, 'login.html', {"login_form": login_form})
