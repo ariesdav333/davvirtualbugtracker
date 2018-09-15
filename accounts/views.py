@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
+from accounts.forms import UserLoginForm
 
 # Create your views here.
 def index(request):
@@ -17,4 +18,5 @@ def logout(request):
 
 def login(request):
     """ Log user in to a page """
-    return render(request, 'login.html')
+    login_form = UserLoginForm() # create an instance of UserLogin form which will be used by login_form
+    return render(request, 'login.html', {"login_form": login_form})
