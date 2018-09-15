@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DavV Virtual Apps Software </title>
+    </head>
+    <body>
+        
+        <p><h1>DavV AR&VR Application Software</h1></p>
+        
+        
+        <nav>
+            <ul>
+                <li><a href="#"> Home</a></li>
+                <li><a href="#"></a>About</li>
+                <li><a href="#">Virtual Apps</a></li>
+                <li><a href="#">Register</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="#">Profile</a></li>
+            </ul>
+        </nav>
+        
+        <hr>
+        {% if messages %}
+        <div>
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+    
+    </body>
+</html>
