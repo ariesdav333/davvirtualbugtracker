@@ -43,3 +43,9 @@ def login(request):
     else:
         login_form = UserLoginForm()    # just defaults to the normal User Login screen waiting for input
     return render(request, 'login.html', {"login_form": login_form})
+    
+    
+def registration(request):
+    """ Render the registration page """
+    return render(request, 'registration.html')
+        
