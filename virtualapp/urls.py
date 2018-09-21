@@ -15,16 +15,13 @@ Including another URLconf
     THIS GETS YOU FROM PAGE TO PAGE 
     Allows us to route to different views using different URLs
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
-from accounts.views import index, logout, login, registration, user_profile
-
+from accounts.views import index
+from accounts import urls as accounts_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
-    url(r'^accounts/logout/$', logout, name="logout"),
-    url(r'^accounts/login/$', login, name="login"),
-    url(r'^accounts/register/$', registration, name="registration"),
-    url(r'^accounts/profile/$', user_profile, name="profile"),
+    url(r'^accounts/', include(accounts_urls))
 ]
