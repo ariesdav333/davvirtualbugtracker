@@ -19,9 +19,13 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from accounts.views import index
 from accounts import urls as accounts_urls
+from threads import views as forum_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
-    url(r'^accounts/', include(accounts_urls))
+    url(r'^accounts/', include(accounts_urls)),
+    url(r'^forum/$', forum_views.forum),
+    url(r'^threads/(?P<subject_id>\d+)/$', forum_views.threads, name='threads'),
+    url(r'^new_thread/(?P<subject_id>\d+)/$',  forum_views.new_thread, name='new_thread'),
 ]
