@@ -1,0 +1,8 @@
+Django==1.11
+arrow==0.12.1
+beautifulsoup4==4.6.3
+disqus==0.0.4
+django-emoticons==1.2
+django-tinymce==2.7.0
+python-dateutil==2.7.3
+pytz==2018.5

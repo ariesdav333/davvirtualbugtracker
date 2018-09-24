@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, get_object_or_404, redirect
 #from threads.models import Subject, Thread, Post
-from models import Subject, Thread, Post
 from django.shortcuts import redirect
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
