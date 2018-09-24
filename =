@@ -1,0 +1,26 @@
+Downloading/unpacking Pillow
+  Running setup.py (path:/tmp/pip_build_root/Pillow/setup.py) egg_info for package Pillow
+    /usr/lib/python2.7/distutils/dist.py:267: UserWarning: Unknown distribution option: 'python_requires'
+      warnings.warn(msg)
+    
+    warning: no files found matching '*.c'
+    warning: no files found matching '*.h'
+    warning: no files found matching '*.sh'
+    no previously-included directories found matching 'docs/_static'
+    warning: no previously-included files found matching '.appveyor.yml'
+    warning: no previously-included files found matching '.coveragerc'
+    warning: no previously-included files found matching '.codecov.yml'
+    warning: no previously-included files found matching '.editorconfig'
+    warning: no previously-included files found matching '.landscape.yaml'
+    warning: no previously-included files found matching '.travis'
+    warning: no previously-included files found matching '.travis/*'
+    warning: no previously-included files found matching 'tox.ini'
+    warning: no previously-included files matching '.git*' found anywhere in distribution
+    warning: no previously-included files matching '*.pyc' found anywhere in distribution
+    warning: no previously-included files matching '*.so' found anywhere in distribution
+Downloading/unpacking 2.0.0
+  Real name of requirement 2.0.0 is 0-0-1
+  Could not find any downloads that satisfy the requirement 2.0.0
+Cleaning up...
+No distributions at all found for 2.0.0
+Storing debug log for failure in /home/ubuntu/.pip/pip.log
