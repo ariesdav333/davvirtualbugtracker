@@ -1,8 +1,16 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{% block page_title %}{% endblock %}</title>
+        
+         <title>{% block page_title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{% static "css/font-awesome-4.5.0/css/font-awesome.css" %}">
+        {% block head_js %}{% endblock head_js %}
+        
+        
+       
     </head>
+    
     <body>
         <p><h1> DavV AR&VR BugTracker App </h1></p>
         
