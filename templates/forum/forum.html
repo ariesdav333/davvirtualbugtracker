@@ -4,9 +4,9 @@
    {% load bootstrap_tags %}
    {% for subject in subjects %}
        <section class="subject">
-           <h2><a href="{% url "threads" subject.id %}">{{ subject.name }}</a></h2>
+           <h2><a href="{% url 'threads' subject.id %}">{{ subject.name }}</a></h2>
            <p>
-               <a href="{% url "threads" subject.id %}">
+               <a href="{% url 'threads' subject.id %}">
                    {% autoescape off %}{{ subject.description }}{% endautoescape %}
                </a>
            </p>

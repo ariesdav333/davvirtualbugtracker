@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'django.contrib.flatpages',
+    'django_forms_bootstrap',
     'accounts',
     'tinymce',
     'emoticons',
@@ -52,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'virtualapp.urls'
@@ -68,9 +71,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            #  'libraries':{
-            # 'thread_extras': 'threads.templatetags.thread_extras',
-            # },
+             'libraries':{
+            'thread_extras': 'threads.templatetags.thread_extras',
+            },
         },
     },
 ]

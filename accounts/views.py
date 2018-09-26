@@ -16,7 +16,7 @@ def index(request):
 def logout(request):
     """ Log the user out """
     auth.logout(request)
-    messages.success(request, "YOu have now logged out. See you soon") # a mesage to the user to say they have logged out
+    messages.success(request, "You have now logged out. Please visit us again") # a mesage to the user to say they have logged out
     return redirect(reverse('index'))  # once logged out will return to the index page
 
 
