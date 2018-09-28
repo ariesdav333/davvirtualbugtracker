@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'emoticons',
     'threads',
     'products',
+    'polls',
 ]
 
 MIDDLEWARE = [
