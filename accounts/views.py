@@ -11,6 +11,10 @@ from accounts.forms import UserLoginForm, UserRegistrationForm
 def index(request):
     """ Return the index.html file (Home) """
     return render(request, 'index.html')
+    
+def about(request):
+    """ Return the about.html filr (About) """
+    return render(request, 'about.html')
 
 @login_required()  
 def logout(request):
