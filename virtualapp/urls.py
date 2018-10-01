@@ -20,9 +20,15 @@ from django.contrib import admin
 from accounts.views import index, about
 from accounts import urls as accounts_urls
 from threads import views as forum_views
+from products import urls as url_products
+from products.views import all_products
+from django.views import static
+from settings import MEDIA_ROOT
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url('r^$', all_products, name='index'),  # may need to remove as something to pointing to index already
     url(r'^$', index, name="index"),
     url(r'^$', about, name="about"),
     url(r'^accounts/', include(accounts_urls)),
@@ -34,4 +40,7 @@ urlpatterns = [
     url(r'^post/edit/(?P<thread_id>\d+)/(?P<post_id>\d+)/$',forum_views.edit_post, name='edit_post'),
     url(r'^post/delete/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.delete_post, name='delete_post'),
     url(r'^thread/vote/(?P<thread_id>\d+)/(?P<subject_id>\d+)/$', forum_views.thread_vote, name='cast_vote'),
+    url(r'^products/', include(url_products)),
+    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),  
+    
 ]
