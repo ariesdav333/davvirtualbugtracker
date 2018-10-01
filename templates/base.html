@@ -23,7 +23,7 @@
     <body>
         <p><h1> DavV AR&VR BugTracker App </h1></p>
         
-        <h1>{% block page_heading %}{% endblock %}</h1>
+        
         
         <!-- adding Bootstrap navbar styling -->
         <nav class = "navbar navbar-default">
@@ -43,7 +43,7 @@
             </ul>
         </nav>
         
-        <hr>
+        <h1>{% block page_heading %}{% endblock %}</h1>
         {% if messages %}
         <div>
             {% for message in messages %}
