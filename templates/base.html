@@ -14,6 +14,8 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static "css/font-awesome-4.5.0/css/font-awesome.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+ 
     {% block head_js %}{% endblock head_js %}
         
         
@@ -21,7 +23,7 @@
     </head>
     
     <body>
-        <p><h1> DavV AR&VR BugTracker App </h1></p>
+        <p> <h1 class="animated infinite bounceInDown">DavV AR&VR BugTracker App </h1></p>
         
         
         
@@ -31,7 +33,7 @@
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'index' %}"> Home</a></li>
                     <li><a href="{% url 'about' %}"> About</a></li>
-                    <li><a href="#"> Your Products </a></li>
+                    <li><a href="{% url 'products' %}"> Your Products </a></li>
                     <li><a href="{% url 'logout' %}"> Logout </a></li>
                     <li><a href="{% url 'profile' %}"> Profile </a></li>
                     <li><a href="/forum/">Forum</a></li>
