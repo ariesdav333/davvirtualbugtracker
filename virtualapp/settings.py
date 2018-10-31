@@ -96,8 +96,8 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 EMAIL_PORT = 587
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
-STRIPE_SECRET = os.getenv('STRIPE_SECRET')
+STRIPE_PUBLISHABLE = os.getenv('pk_test_bAUe7yN1i8MVOYOkHHGH6Aw2')
+STRIPE_SECRET = os.getenv('sk_test_RA7pSAvvb0paKcilT0MYcZGV')
 
 AUTH_USER_MODEL = 'accounts.User' 
 
