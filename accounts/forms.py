@@ -9,7 +9,7 @@ from django.core.exceptions import ValidationError
   
 class UserLoginForm(forms.Form):
   username = forms.CharField()
-#   password = forms.CharField(widget=forms.PasswordInput)
+  password = forms.CharField(widget=forms.PasswordInput) # testing
   
   
 class UserRegistrationForm(UserCreationForm):
