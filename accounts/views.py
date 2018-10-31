@@ -8,6 +8,11 @@ from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
+from django.conf import settings
+import datetime
+import stripe
+
+stripe.api_key = settings.STRIPE_SECRET
 
 # Create your views here.
 def index(request):
@@ -53,31 +58,38 @@ def login(request):
     
     
 def registration(request):
-    """ Render the registration page """
-    if request.user.is_authenticated:
-        return redirect(reverse('index'))
-        
-    if request.method == "POST":
-        registration_form = UserRegistrationForm(request.POST)
-        
-        if registration_form.is_valid():
-            registration_form.save()
-            
-            user = auth.authenticate(username=request.POST['username'],
-                                     password=request.POST['password1'])
-                                     
-            if user:
-                auth.login(user=user, request=request)
-                messages.success(request, "You have successfully registered")
-                return redirect(reverse('index'))
-            else:
-                messages.error(request, "Unable to register the account at this time")
-    else:    
-        registration_form = UserRegistrationForm()
-        
-    return render(request, 'registration.html', {
-        "registration_form": registration_form})
-        
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            try:
+                customer = stripe.Charge.create(
+                    amount=999,
+                    currency="USD",
+                    description=form.cleaned_data['email'],
+                    card=form.cleaned_data['stripe_id'],
+                )
+                if customer.paid:
+                    form.save()
+                    user = auth.authenticate(email=request.POST.get('email'),
+                                             password=request.POST.get('password1'))
+                    if user:
+                        auth.login(request, user)
+                        messages.success(request, "You have successfully registered")
+                        return redirect(reverse('profile'))
+                    else:
+                        messages.error(request, "unable to log you in at this time!")
+                else:
+                    messages.error(request, "We were unable to take a payment with that card!")
+            except stripe.error.CardError, e:
+                messages.error(request, "Your card was declined!")
+    else:
+        today = datetime.date.today()
+        form = UserRegistrationForm()
+ 
+    args = {'form': form, 'publishable': settings.STRIPE_PUBLISHABLE}
+    args.update(csrf(request))
+ 
+    return render(request, 'registration.html', args)
         
 
 #def profile(request):

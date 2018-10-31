@@ -1,16 +1,35 @@
 {% extends 'base.html' %}
-
+{% load bootstrap_tags %}
+{% load staticfiles %}
 {% block page_title %}Registration Page{% endblock %}
+
+{% block head_js %}
+  <script src="https://js.stripe.com/v2/" type="text/javascript"></script>
+  <script type="text/javascript">
+      //<![CDATA[
+      Stripe.publishableKey = '{{ publishable }}';
+      //]]>
+  </script>
+  <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
+{% endblock %}
+ 
+
 
 {% block page_heading %} User Registration {% endblock %}
 
-{% block content %}
- <p>If you already have an account, you can <a href="{% url 'login'%}">Sign In</a> </p>
+
+ {% block content %}
+  <form role="form" method="post" id="register-form" action="{% url 'registration' %}">
+    <div id="credit-card-errors" style="display:none">
+      <div class="alert-message block-message error" id="stripe-error-message"></div>
+    </div>
  
- <form method="POST">
+    <legend>Create a new account</legend>
     {% csrf_token %}
-    {{ registration_form.as_p }}
-    <button type="submit">Register</button>
-</form>
+    {{ form|as_bootstrap }}
+    <div class="form-group">
+      <input class="btn btn-primary" id="validate_card_btn" name="commit" type="submit" value="Validate Credit Card">
+    </div>
+  </form>
  
 {% endblock %}

@@ -84,8 +84,11 @@ USE_L10N = True
 USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = (
- os.path.join(BASE_DIR, 'static'),)
+ os.path.join(BASE_DIR, 'static'),
+ )
+ 
 TINYMCE_JS_ROOT = os.path.join(BASE_DIR, 'static', 'js', 'tinymce', 'tinymce.min.js')
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
