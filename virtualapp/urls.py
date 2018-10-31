@@ -17,7 +17,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from accounts.views import index, about
+from accounts import views as accounts_views
 from accounts import urls as accounts_urls
 from threads import views as forum_views
 from django.views import static
@@ -27,10 +27,13 @@ from settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index, name="index"),
-    url(r'^$', about, name="about"),
+    #url(r'^$', index, name="index"),
+    url(r'^$', accounts_views.index, name="index"),
+    url(r'^$', accounts_views.about, name="about"),
     url(r'^accounts/', include(accounts_urls)),
     url(r'^forum/$', forum_views.forum),
+    url(r'^profile/$', accounts_views.profile, name="profile"),
+    url(r'^registration/$', accounts_views.registration, name="registration"),
     url(r'^threads/(?P<subject_id>\d+)/$', forum_views.threads, name='threads'),
     url(r'^new_thread/(?P<subject_id>\d+)/$',  forum_views.new_thread, name='new_thread'),
     url(r'^thread/(?P<thread_id>\d+)/$', forum_views.thread, name='thread'),
@@ -39,5 +42,4 @@ urlpatterns = [
     url(r'^post/delete/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.delete_post, name='delete_post'),
     url(r'^thread/vote/(?P<thread_id>\d+)/(?P<subject_id>\d+)/$', forum_views.thread_vote, name='cast_vote'),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),  
-    
 ]
