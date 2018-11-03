@@ -77,6 +77,7 @@ def thread(request, thread_id):
     args = {'thread': thread_}
     args.update(csrf(request))
     return render(request, 'forum/thread.html', args)
+  
     
 @login_required
 def new_post(request, thread_id):
