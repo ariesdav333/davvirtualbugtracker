@@ -68,7 +68,7 @@ def registration(request):
                     description=form.cleaned_data['email'],
                     card=form.cleaned_data['stripe_id'],
                 )
-                if customer.paid:
+                if customer:
                     form.save()
                     user = auth.authenticate(email=request.POST.get('email'),
                                              password=request.POST.get('password1'))
